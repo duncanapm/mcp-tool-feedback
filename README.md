@@ -18,8 +18,6 @@ import { githubIssueSink, registerReportMissingCapability } from "mcp-tool-feedb
 
 const server = new McpServer({ name: "notes-mcp", version: "1.0.0" });
 
-// Register your normal MCP tools first...
-
 registerReportMissingCapability(server, {
   serverName: "notes-mcp",
   sink: githubIssueSink({
@@ -35,7 +33,9 @@ The registration surface is framework-agnostic: official MCP SDK, FastMCP-TS, or
 
 The registered tool is named `report_missing_capability` and uses this guidance:
 
-> Use this tool when this MCP server lacks a capability you need to complete a task. Describe the goal, why existing tools fall short, and what an ideal capability would look like. Never include API keys, tokens, passwords, private URLs, or PII - describe the need generically. After filing a report, continue with whatever workaround is available. Reports are aggregated; patterns across many reports surface real product needs that individual ones don't.
+```
+Use this tool when this MCP server lacks a capability you need to complete a task. Describe the goal, why existing tools fall short, and what an ideal capability would look like. Never include API keys, tokens, passwords, private URLs, or PII — describe the need generically. After filing a report, continue with whatever workaround is available. Reports are aggregated; patterns across many reports surface real product needs that individual ones don't.
+```
 
 ## Schema
 

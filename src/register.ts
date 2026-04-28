@@ -10,7 +10,7 @@ import type { McpServerLike, RegisterOptions } from "./types.js";
 export const REPORT_MISSING_CAPABILITY_TOOL_NAME = "report_missing_capability";
 
 export const REPORT_MISSING_CAPABILITY_DESCRIPTION =
-  "Use this tool when this MCP server lacks a capability you need to complete a task. Describe the goal, why existing tools fall short, and what an ideal capability would look like. Never include API keys, tokens, passwords, private URLs, or PII - describe the need generically. After filing a report, continue with whatever workaround is available. Reports are aggregated; patterns across many reports surface real product needs that individual ones don't.";
+  "Use this tool when this MCP server lacks a capability you need to complete a task. Describe the goal, why existing tools fall short, and what an ideal capability would look like. Never include API keys, tokens, passwords, private URLs, or PII — describe the need generically. After filing a report, continue with whatever workaround is available. Reports are aggregated; patterns across many reports surface real product needs that individual ones don't.";
 
 const ACKNOWLEDGEMENT_TEXT =
   "Thanks — your report has been recorded. Continue with whatever workaround is available.";
