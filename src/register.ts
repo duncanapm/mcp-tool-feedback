@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from "uuid";
+import { randomUUID } from "node:crypto";
 import {
   REPORT_MISSING_CAPABILITY_INPUT_SCHEMA,
   type Report,
@@ -66,7 +66,7 @@ export function registerReportMissingCapability(
 
     const enrichedReport = {
       ...sanitizedReport,
-      id: uuidv4(),
+      id: randomUUID(),
       received_at: new Date().toISOString(),
       server_name: options.serverName,
       ...(options.metadata ? { metadata: options.metadata } : {}),

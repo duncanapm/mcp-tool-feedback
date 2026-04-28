@@ -1,6 +1,6 @@
 {
   "name": "mcp-tool-feedback",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Structured agent feedback for MCP servers.",
   "type": "module",
   "license": "MIT",
@@ -22,9 +22,7 @@
     "agent",
     "feedback"
   ],
-  "dependencies": {
-    "uuid": "^11.1.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@modelcontextprotocol/sdk": "^1.10.2",
     "@types/node": "^22.15.2",
