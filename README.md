@@ -1,19 +1,19 @@
-# tool-feedback
+# mcp-tool-feedback
 
 > Close the loop with the agents calling your MCP server.
 
-`tool-feedback` is a small TypeScript library that adds one structured feedback tool to any MCP server: `report_missing_capability`. When an agent hits a capability gap, it can describe the user goal, why the current tools fall short, and what an ideal capability would do. You decide where that report lands: GitHub Issues, a JSONL file, or your own sink.
+`mcp-tool-feedback` is a small TypeScript library that adds one structured feedback tool to any MCP server: `report_missing_capability`. When an agent hits a capability gap, it can describe the user goal, why the current tools fall short, and what an ideal capability would do. You decide where that report lands: GitHub Issues, a JSONL file, or your own sink.
 
 ## Install
 
 ```bash
-npm install tool-feedback
+npm install mcp-tool-feedback
 ```
 
 ## Quick Start
 
 ```typescript
-import { githubIssueSink, registerReportMissingCapability } from "tool-feedback";
+import { githubIssueSink, registerReportMissingCapability } from "mcp-tool-feedback";
 
 registerReportMissingCapability(server, {
   serverName: "my-mcp",
@@ -53,7 +53,7 @@ import {
   githubIssueSink,
   jsonlFileSink,
   type Sink,
-} from "tool-feedback";
+} from "mcp-tool-feedback";
 ```
 
 `githubIssueSink` creates one GitHub issue per report using `fetch` and GitHub's REST API.

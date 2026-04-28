@@ -16,5 +16,5 @@ export interface GithubIssueSinkOptions {
  * Create a sink that writes reports to GitHub Issues.
  */
 export function githubIssueSink(_options: GithubIssueSinkOptions): Sink {
-  throw new Error("[tool-feedback] githubIssueSink is not implemented yet");
+  throw new Error("[mcp-tool-feedback] githubIssueSink is not implemented yet");
 }

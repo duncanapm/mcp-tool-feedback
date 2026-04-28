@@ -1,11 +1,11 @@
-# tool-feedback demo
+# mcp-tool-feedback demo
 
 This demo runs a toy MCP server called `notes-mcp` with two real tools:
 
 - `create_note(title: string, body: string)` stores one note in memory.
 - `search_notes(query: string)` returns matching notes.
 
-It also registers `report_missing_capability` via `tool-feedback`, with reports sent to GitHub Issues.
+It also registers `report_missing_capability` via `mcp-tool-feedback`, with reports sent to GitHub Issues.
 
 ## Run Locally
 

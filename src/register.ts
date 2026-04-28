@@ -12,5 +12,5 @@ export function registerReportMissingCapability(
   _server: McpServerLike,
   _options: RegisterOptions,
 ): () => void {
-  throw new Error("[tool-feedback] registerReportMissingCapability is not implemented yet");
+  throw new Error("[mcp-tool-feedback] registerReportMissingCapability is not implemented yet");
 }

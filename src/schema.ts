@@ -23,5 +23,5 @@ export interface EnrichedReport extends Report {
  * Validate and normalize unknown tool input into a Report.
  */
 export function validateReport(_args: unknown): Report {
-  throw new Error("[tool-feedback] validateReport is not implemented yet");
+  throw new Error("[mcp-tool-feedback] validateReport is not implemented yet");
 }

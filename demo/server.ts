@@ -38,7 +38,7 @@ server.tool("search_notes", {}, async (args) => {
 registerReportMissingCapability(server, {
   serverName: "notes-mcp",
   sink: githubIssueSink({
-    repo: process.env.GITHUB_REPOSITORY ?? "yourorg/tool-feedback-demo",
+    repo: process.env.GITHUB_REPOSITORY ?? "yourorg/mcp-tool-feedback-demo",
     token: process.env.GITHUB_TOKEN ?? "",
   }),
 });
