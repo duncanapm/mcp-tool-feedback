@@ -2,7 +2,7 @@
 
 We have mature ways to observe MCP servers when agents call tools: logs, traces, OpenTelemetry spans, and error monitoring. That stack tells you what happened. It does not tell you what the agent was trying to do when no existing tool matched the task.
 
-`mcp-tool-feedback` adds that missing channel. It registers one structured tool, `report_missing_capability`, that an agent can call when it hits a capability gap. The report is routed to a configurable sink: GitHub Issues, a local JSONL file, or your own sink implementation.
+`mcp-tool-feedback` adds that missing channel. It registers one structured tool, `report_missing_capability`, that an agent can call when it hits a capability gap. The report is routed to a configurable sink: GitHub Issues, a local JSONL file, or your own sink implementation. Zero runtime dependencies — built on Node's standard library.
 
 ## Install
 
