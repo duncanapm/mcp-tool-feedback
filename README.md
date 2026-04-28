@@ -1,8 +1,8 @@
 # mcp-tool-feedback
 
-> Close the loop with the agents calling your MCP server.
+We have mature ways to observe MCP servers when agents call tools: logs, traces, OpenTelemetry spans, and error monitoring. That stack tells you what happened. It does not tell you what the agent was trying to do when no existing tool matched the task.
 
-`mcp-tool-feedback` is a small TypeScript library that adds one structured feedback tool to any MCP server: `report_missing_capability`. When an agent hits a capability gap, it can describe the user goal, why the current tools fall short, and what an ideal capability would do. You decide where that report lands: GitHub Issues, a JSONL file, or your own sink.
+`mcp-tool-feedback` adds that missing channel. It registers one structured tool, `report_missing_capability`, that an agent can call when it hits a capability gap. The report is routed to a configurable sink: GitHub Issues, a local JSONL file, or your own sink implementation.
 
 ## Install
 
@@ -13,18 +13,23 @@ npm install mcp-tool-feedback
 ## Quick Start
 
 ```typescript
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { githubIssueSink, registerReportMissingCapability } from "mcp-tool-feedback";
 
+const server = new McpServer({ name: "notes-mcp", version: "1.0.0" });
+
+// Register your normal MCP tools first...
+
 registerReportMissingCapability(server, {
-  serverName: "my-mcp",
+  serverName: "notes-mcp",
   sink: githubIssueSink({
-    repo: "yourorg/yourrepo",
+    repo: "duncanapm/mcp-tool-feedback-demo",
     token: process.env.GITHUB_TOKEN!,
   }),
 });
 ```
 
-The `server` can be the official `@modelcontextprotocol/sdk` server, FastMCP-TS, or any MCP server object with a compatible `.tool(name, schema, handler)` method.
+The registration surface is framework-agnostic: official MCP SDK, FastMCP-TS, or any server exposing a compatible `.tool(name, schema, handler)` method.
 
 ## What The Agent Sees
 
@@ -44,7 +49,7 @@ interface Report {
 }
 ```
 
-The three required fields must be non-empty strings. Every string field is capped at 4000 characters and passed through a best-effort sanitizer before it reaches a sink.
+Every string field is run through a best-effort sanitiser that redacts common API key prefixes, bearer tokens, AWS access keys, emails, and tokens in URL query parameters before reaching the sink.
 
 ## Sinks
 
@@ -68,17 +73,26 @@ interface Sink {
 }
 ```
 
+Sinks should be best-effort and never throw out of `write()` — the library catches sink failures, logs them, and still returns a successful acknowledgement to the agent. The agent must never see sink failures.
+
 ## Demo
 
-See `demo/README.md` for a minimal `notes-mcp` server that demonstrates an agent filing a missing-capability report when asked to bulk-create tagged notes.
+The demo wires a minimal `notes-mcp` server with `create_note`, `search_notes`, and `report_missing_capability`. When an agent is asked for a capability the server cannot fulfill (for example, bulk note creation with tags), the library captures the report, sanitises it, enriches it, and routes it through the configured sink so a GitHub issue appears in the demo repo.
+
+<!-- TODO: embed screencast GIF here once recorded -->
+
+Setup and run instructions live in `demo/README.md`.
 
 ## Roadmap
 
-Planned follow-ups include additional report types in the same family, more sinks such as Slack and generic HTTP POST, aggregation workflows, a Cursor automation companion, and a Python port. They are intentionally out of scope for v0.
+`mcp-tool-feedback` starts a small family of agent-experience instrumentation tools. They share the same `report_*` shape and the same sink interface.
 
-## Status
+- `report_missing_capability` (v0, shipped) — tool does not exist.
+- `report_tool_limitation` — tool exists but the result is functionally wrong.
+- `report_tool_optimisation` — tool works but the path is wasteful (verbose output, too many calls). This is the most agent-native signal: it captures cost and friction patterns only the agent can observe.
+- `report_difficulty` — tool errored, broke, or was circumvented. It includes a `fallback_taken` field to capture real-time vendor-switching at the moment of failure.
 
-v0 is focused on one tool, two sinks, and a small framework-agnostic API.
+Additional planned work includes more sinks (Slack, generic HTTP), aggregation workflows, a Cursor automation companion, and a Python port.
 
 ## License
 
