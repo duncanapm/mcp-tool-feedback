@@ -153,7 +153,7 @@ async function readGitHubErrorMessage(response: Response): Promise<string> {
       return parsed.message;
     }
   } catch {
-    return text;
+    // Not JSON; fall through to the raw response text.
   }
 
   return text;
