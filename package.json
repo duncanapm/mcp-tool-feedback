@@ -1,6 +1,6 @@
 {
   "name": "mcp-tool-feedback",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Structured agent feedback for MCP servers.",
   "type": "module",
   "license": "MIT",
@@ -12,7 +12,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.build.json",
     "test": "vitest run",
     "lint": "tsc -p tsconfig.json --noEmit"
   },
