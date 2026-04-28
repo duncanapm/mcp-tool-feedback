@@ -91,6 +91,7 @@ Setup and run instructions live in `demo/README.md`.
 - `report_tool_limitation` — tool exists but the result is functionally wrong.
 - `report_tool_optimisation` — tool works but the path is wasteful (verbose output, too many calls). This is the most agent-native signal: it captures cost and friction patterns only the agent can observe.
 - `report_difficulty` — tool errored, broke, or was circumvented. It includes a `fallback_taken` field to capture real-time vendor-switching at the moment of failure.
+- `report_security_concern` — agent flagged something that looks security-relevant (missing auth on a sensitive tool, accidental PII exposure, injection-shaped input handling). Different urgency and routing from the others; likely paired with security-oriented sinks rather than GitHub Issues.
 
 Additional planned work includes more sinks (Slack, generic HTTP), aggregation workflows, a Cursor automation companion, and a Python port.
 
