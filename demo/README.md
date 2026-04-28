@@ -1,6 +1,6 @@
 # mcp-tool-feedback demo
 
-This demo runs a toy MCP server called `notes-mcp` with two real tools:
+This demo runs a minimal MCP server called `notes-mcp` with two real tools:
 
 - `create_note(title: string, body: string)` stores one note in memory.
 - `search_notes(query: string)` returns matching notes.

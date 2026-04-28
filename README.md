@@ -70,7 +70,7 @@ interface Sink {
 
 ## Demo
 
-See `demo/README.md` for a toy `notes-mcp` server that demonstrates an agent filing a missing-capability report when asked to bulk-create tagged notes.
+See `demo/README.md` for a minimal `notes-mcp` server that demonstrates an agent filing a missing-capability report when asked to bulk-create tagged notes.
 
 ## Roadmap
 
