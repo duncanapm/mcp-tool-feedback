@@ -4,6 +4,14 @@
   "description": "Structured agent feedback for MCP servers.",
   "type": "module",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duncanapm/mcp-tool-feedback.git"
+  },
+  "homepage": "https://github.com/duncanapm/mcp-tool-feedback#readme",
+  "bugs": {
+    "url": "https://github.com/duncanapm/mcp-tool-feedback/issues"
+  },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
